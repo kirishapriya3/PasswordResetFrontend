@@ -105,7 +105,7 @@ http://localhost:5173
 ```
 
 ---
-
+DEPLOYMENT LINK : https://cerulean-frangollo-dfaf90.netlify.app/
 ## 🔐 API Endpoints
 
 ### Register
@@ -129,7 +129,8 @@ POST `/api/auth/forgot-password`
   "email": "test@gmail.com"
 }
 ```
-
+- NOW CHECK ON MONGODB ATLAS, YOU WILL GET A TOKEN.
+- COPY AND PASTE ON THE BELOW LINK'S token AREA.
 ---
 
 ### Reset Password
@@ -140,7 +141,7 @@ POST `/api/auth/reset-password/:token`
   "password": "newpassword"
 }
 ```
-
+-NOW, YOUR PASSWORD RESET SUCCESSFULLY!
 ---
 
 # 🧪 How You Can Test This Project
