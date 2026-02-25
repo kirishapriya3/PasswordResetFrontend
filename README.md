@@ -1,16 +1,207 @@
-# React + Vite
+# 🔐 Password Reset System (MERN Stack)
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+A full-stack Password Reset application built using Node.js, Express, MongoDB Atlas, and React (Vite).
 
-Currently, two official plugins are available:
+This project demonstrates secure user registration, password reset via email, token validation, and frontend-backend integration.
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Babel](https://babeljs.io/) (or [oxc](https://oxc.rs) when used in [rolldown-vite](https://vite.dev/guide/rolldown)) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+---
 
-## React Compiler
+## 🚀 Features
 
-The React Compiler is not enabled on this template because of its impact on dev & build performances. To add it, see [this documentation](https://react.dev/learn/react-compiler/installation).
+- User Registration (bcrypt password hashing)
+- Forgot Password (secure token generation using crypto)
+- Token expiry (15 minutes)
+- Email sending using Nodemailer (Gmail App Password)
+- Reset password with token validation
+- Token auto-clear after successful reset
+- React frontend with routing
+- MongoDB Atlas database integration
 
-## Expanding the ESLint configuration
+---
 
-If you are developing a production application, we recommend using TypeScript with type-aware lint rules enabled. Check out the [TS template](https://github.com/vitejs/vite/tree/main/packages/create-vite/template-react-ts) for information on how to integrate TypeScript and [`typescript-eslint`](https://typescript-eslint.io) in your project.
+## 🛠 Tech Stack
+
+### Backend
+- Node.js
+- Express.js
+- MongoDB Atlas
+- Mongoose
+- bcrypt
+- crypto
+- nodemailer
+- dotenv
+
+### Frontend
+- React (Vite)
+- Axios
+- React Router DOM
+- Bootstrap (UI)
+
+---
+
+## 📂 Project Structure
+
+```
+backend/
+  Controllers/
+  Models/
+  Routes/
+  server.js
+
+frontend/
+  src/
+    pages/
+      Register.jsx
+      Forgot.jsx
+      Reset.jsx
+    App.jsx
+    main.jsx
+```
+
+---
+
+## ⚙️ Backend Environment Variables (.env)
+
+```
+PORT=4000
+MONGO_URI=your_mongodb_connection_string
+EMAIL_USER=your_gmail_address
+EMAIL_PASS=your_gmail_app_password
+CLIENT_URL=http://localhost:5173
+```
+
+⚠️ Use Gmail App Password (not your real Gmail password).
+
+---
+
+## 🔌 Installation & Running the Project
+
+### 1️⃣ Backend
+
+```
+cd backend
+npm install
+npm run dev
+```
+
+Runs on:
+```
+http://localhost:4000
+```
+
+---
+
+### 2️⃣ Frontend
+
+```
+cd frontend
+npm install
+npm run dev
+```
+
+Runs on:
+```
+http://localhost:5173
+```
+
+---
+
+## 🔐 API Endpoints
+
+### Register
+POST `/api/auth/register`
+
+```
+{
+  "username": "testuser",
+  "email": "test@gmail.com",
+  "password": "123456"
+}
+```
+
+---
+
+### Forgot Password
+POST `/api/auth/forgot-password`
+
+```
+{
+  "email": "test@gmail.com"
+}
+```
+
+---
+
+### Reset Password
+POST `/api/auth/reset-password/:token`
+
+```
+{
+  "password": "newpassword"
+}
+```
+
+---
+
+# 🧪 How You Can Test This Project
+
+## Step 1: Start Backend
+```
+cd backend
+npm run dev
+```
+
+## Step 2: Start Frontend
+```
+cd frontend
+npm run dev
+```
+
+## Step 3: Open Browser
+```
+http://localhost:5173
+```
+
+### Testing Flow:
+
+1. Register a new user
+2. Click "Forgot Password"
+3. Enter registered email
+4. Check email for reset link
+5. Click link (opens Reset page)
+6. Enter new password
+7. Password updated successfully
+
+---
+
+## 🔎 Testing Using Postman (Optional)
+
+### Register
+```
+POST http://localhost:4000/api/auth/register
+```
+
+### Forgot Password
+```
+POST http://localhost:4000/api/auth/forgot-password
+```
+
+### Reset Password
+```
+POST http://localhost:4000/api/auth/reset-password/<token>
+```
+
+---
+
+## 🔒 Security Highlights
+
+- Passwords hashed with bcrypt
+- Secure random reset token
+- Token expiry validation
+- Token removed after successful reset
+- Environment variables for sensitive data
+
+---
+
+## 👩‍💻 Author
+Kirisha Priya
